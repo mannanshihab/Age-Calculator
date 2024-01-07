@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function calculateAge(birthDate) {
+          var today = new Date();
+          var age = today.getFullYear() - birthDate.getFullYear();
+          var monthDiff = today.getMonth() - birthDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+          }
+          return age;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="row m-2">
+        <div class="card col-md-4 m-5 p-2 text-center shadow mx-auto border border-success">
+            <h1 class="mt-5">Age Calculator</h1>
+            <p class="text-dark">Enter Your Date Of Birth</p>
+            <input class="form-control mt-2 mb-2" type="date" id="dob">
+            <button class="mt-2 mb-2 btn btn-success" onclick="calculate()">Calculate</button>
+            <p class="m-5">Your age is: <span id="age"></span></p>
+        </div>
+    </div>
+    <div class="clearfix">...</div>
+    <script>
+      function calculate() {
+        var dob = new Date(document.getElementById("dob").value);
+        var age = calculateAge(dob);
+        document.getElementById("age").textContent = age;
+      }
+    </script>
+</body>
+</html>
